@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_nama"
+        android:id="@+id/tv_sesi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nama Anda"
@@ -36,6 +36,7 @@
         android:textColorHint="@color/white"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
+        android:onClick="prosesLogout"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
