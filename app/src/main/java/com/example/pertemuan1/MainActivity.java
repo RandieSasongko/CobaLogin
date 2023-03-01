@@ -12,12 +12,13 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvSesi;
+    private TextView tvSesi, tvName;
     private Button btnLogout;
-    private String sesi;
+    private String sesi, name;
     KendaliLogin KL = new KendaliLogin();
 
     public static String keySPusername = "GtPJAx45lMjkuICbExYELQ==_username";
+    public static String keySPName = "GtPJAx45lMjkuICbExYELQ==_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +28,22 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
 
             sesi = KL.getPref(MainActivity.this, keySPusername);
+            name = KL.getPref(MainActivity.this , keySPName);
+
             tvSesi = findViewById(R.id.tv_sesi);
+            tvName = findViewById(R.id.tv_name);
+
             btnLogout = findViewById(R.id.btn_logout);
 
             tvSesi.setText(sesi);
+            tvName.setText(name);
 
             btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     KL.setPref(MainActivity.this, keySPusername, null);
-                    startActivity(new Intent(MainActivity.this, null));
+                    KL.setPref(MainActivity.this, keySPName, null);
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
                 }
             });
